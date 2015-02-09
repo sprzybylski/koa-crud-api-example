@@ -1,16 +1,12 @@
-module.exports.getProducts = function *(next) {
-    var products = yield this.products.find({});
+var parse = require('co-body');
 
-    if (!products) {
-        this.throw(404);
-    }
-
-    this.body = products;
+module.exports.get = function *(next) {
+    this.body = yield this.products.find({});
 
     yield next;
 };
 
-module.exports.getProductById = function *(id, next) {
+module.exports.getById = function *(id, next) {
     var product = yield this.products.findById(id);
 
     if (!product) {
@@ -18,6 +14,15 @@ module.exports.getProductById = function *(id, next) {
     }
 
     this.body = product;
+
+    yield next;
+};
+
+module.exports.create = function *(next) {
+    var product = yield parse(this);
+
+    this.status = 201;
+    this.body = yield this.products.insert(product);
 
     yield next;
 };

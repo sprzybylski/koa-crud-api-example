@@ -4,10 +4,13 @@
   "description": "Example usage of koajs to create simple CRUD API.",
   "main": "server.js",
   "author": "Szymon Przybylski <szymon.przybylski@gmail.com>",
+  "repository": "https://github.com/sprzybylski/koa-crud-api-example",
   "license": "MIT",
   "dependencies": {
+    "co-body": "^1.0.0",
     "co-monk": "^1.0.0",
-    "koa": "^0.13.0",
+    "koa": "^0.17.0",
+    "koa-basic-auth": "^1.1.2",
     "koa-route": "^2.4.0",
     "monk": "^0.9.1"
   }
